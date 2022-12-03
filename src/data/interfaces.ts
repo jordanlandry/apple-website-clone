@@ -5,10 +5,11 @@ export interface BackgroundImageType {
 }
 
 export interface CardType {
-  id: number;
-  heading: string;
-  subheading: string;
   backgroundImages: BackgroundImageType;
 }
 
 // Props
+export interface CardTypeProps extends CardType {
+  children?: React.ReactNode;
+  className?: string;
+}
