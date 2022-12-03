@@ -13,7 +13,9 @@
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
+  height: 500vh;
 }
 
 a {
@@ -57,16 +59,17 @@ li {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 
-  gap: 30.5px;
+  gap: 30px;
 }
 
 .navbar--wrapper > li {
   margin: 0;
-  filter: brightness(0.8);
   transition: 0.15s;
-  font-size: 12px;
+  font-size: 12.5px;
   height: inherit;
   display: flex;
+
+  filter: brightness(0.8);
 }
 
 .navbar--wrapper > li > * {
@@ -79,4 +82,16 @@ li {
 
 .navbar--wrapper > li:hover {
   filter: brightness(1);
+}
+
+/* Cards */
+.card-big--bg-img {
+  object-fit: cover;
+  size: contain;
+  height: 600px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }

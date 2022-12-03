@@ -13,9 +13,6 @@ export default function Navbar() {
   const toggleIsSearching = () => setIsSearching((prev) => !prev);
   const toggleCartOpen = () => setCartOpen((prev) => !prev);
 
-  console.log(isSearching);
-  console.log(cartOpen);
-
   return (
     <nav className="navbar">
       <ul className={width > MAX_WIDTH ? "navbar--wrapper" : "navbar--wrapper-collapsed"}>
