@@ -10,9 +10,9 @@ export default function CardBig({ backgroundImages, children, className }: CardT
   const image = backgroundImages[sizes[imageSize] as keyof typeof backgroundImages];
 
   return (
-    <div className={`card-big ${className}`} style={{ height: `${imageHeight}px` }}>
+    <div className={`card-big ${className}`} style={{ height: `${imageHeight}px`, backgroundImage: `url(${image})` }}>
       {children}
-      <img src={image} className="card-big--bg-img" />
+      {/* <img src={} className="card-big--bg-img" /> */}
     </div>
   );
 }

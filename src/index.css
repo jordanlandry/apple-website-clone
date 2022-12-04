@@ -96,17 +96,9 @@ li {
 /* Cards */
 .card-big {
   height: inherit;
-}
-
-.card-big--bg-img {
-  object-fit: cover;
-  size: contain;
-  width: 100%;
-  height: inherit;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .card-big--accessibility {
