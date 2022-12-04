@@ -1,3 +1,8 @@
+interface link {
+  title: string;
+  url: string;
+}
+
 export interface BackgroundImageType {
   small: string;
   medium: string;
@@ -8,10 +13,21 @@ export interface CardType {
   backgroundImages: BackgroundImageType;
 }
 
+export interface CardSmallType extends CardType {
+  heading?: string;
+  subheading?: string;
+  links?: link[];
+}
+
 // Props
 export interface CardTypeProps extends CardType {
   children?: React.ReactNode;
   className?: string;
+}
+
+export interface CardSmallProps extends CardTypeProps, CardSmallType {
+  before?: HTMLElement;
+  after?: HTMLElement;
 }
 
 export interface IconProps {

@@ -1,8 +1,22 @@
 import CardBig from "../components/CardBig";
+import CardSmall from "../components/CardSmall";
+import frontPageSmallIcons from "../data/frontPage";
+import { CardSmallProps } from "../data/interfaces";
 import Chevron from "../icons/Chevron";
 import PlayButton from "../icons/PlayButton";
 
 export default function HomePage() {
+  const smallCardElements = frontPageSmallIcons.map((card: CardSmallProps, index: number) => (
+    <CardSmall
+      key={index}
+      className={card.className}
+      heading={card.heading}
+      subheading={card.subheading}
+      links={card.links}
+      backgroundImages={card.backgroundImages}
+    />
+  ));
+
   return (
     <div>
       <CardBig
@@ -24,7 +38,7 @@ export default function HomePage() {
       </CardBig>
 
       <CardBig
-        className="card-big--iphone14"
+        className="card-big--iphone14 card-big-top-text"
         backgroundImages={{
           small: "https://www.apple.com/v/home/aw/images/heroes/iphone-14/hero_iphone14__fjmsqstr1ceq_small.jpg",
           medium: "https://www.apple.com/v/home/aw/images/heroes/iphone-14/hero_iphone14__fjmsqstr1ceq_mediumtall.jpg",
@@ -46,6 +60,8 @@ export default function HomePage() {
           </div>
         </div>
       </CardBig>
+
+      <div className="card-small-container">{smallCardElements}</div>
     </div>
   );
 }

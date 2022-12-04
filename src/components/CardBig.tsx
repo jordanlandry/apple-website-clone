@@ -12,7 +12,6 @@ export default function CardBig({ backgroundImages, children, className }: CardT
   return (
     <div className={`card-big ${className}`} style={{ height: `${imageHeight}px`, backgroundImage: `url(${image})` }}>
       {children}
-      {/* <img src={} className="card-big--bg-img" /> */}
     </div>
   );
 }

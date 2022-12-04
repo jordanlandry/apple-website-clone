@@ -22,7 +22,6 @@
 body {
   overflow-x: hidden;
   margin: 0;
-  height: 500vh;
 }
 
 a {
@@ -129,14 +128,18 @@ li {
   margin-top: 5px;
 }
 
-.card-big--iphone14-content {
-  margin-top: -40%;
-}
-
 .card-big a {
   font-size: 20px;
   font-weight: normal;
   margin-top: 15px;
+}
+
+.card-big a:hover {
+  text-decoration: underline;
+}
+
+.card-big--iphone14-content {
+  margin-top: -40%;
 }
 
 .card-big--accessibility a {
@@ -147,19 +150,34 @@ li {
   justify-content: center;
 }
 
-.card-big a:hover {
-  text-decoration: underline;
-}
-
-.card-big--iphone14-content > div {
+.card-big-top-text > div > div {
   display: flex;
   gap: 50px;
 }
 
-.card-big--iphone14-content a {
+.card-big-top-text a {
   color: #0066cc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+}
+
+/* Small Cards */
+.card-small-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 12px;
+}
+
+@media screen and (max-width: 734px) {
+  .card-small-container {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0;
+  }
+}
+
+.card-small--content {
+  width: 100%;
+  height: inherit;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }

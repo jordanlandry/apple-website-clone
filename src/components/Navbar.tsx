@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useWidth from "../hooks/useWidth";
+import AppleLogo from "../icons/AppleLogo";
 import NavLink from "./NavLink";
 
 export default function Navbar() {
@@ -17,10 +18,7 @@ export default function Navbar() {
     <nav className="navbar">
       <ul className={width > MAX_WIDTH ? "navbar--wrapper" : "navbar--wrapper-collapsed"}>
         <NavLink link="/">
-          <img
-            alt="Apple"
-            src="https://www.apple.com/ac/globalnav/7/en_US/images/be15095f-5a20-57d0-ad14-cf4c638e223a/globalnav_apple_image__b5er5ngrzxqq_large.svg"
-          />
+          <AppleLogo />
         </NavLink>
         <NavLink link="/store">Store</NavLink>
         <NavLink link="/mac">Mac</NavLink>
