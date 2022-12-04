@@ -16,3 +16,15 @@
   height: 33%;
   background-color: black;
 }
+
+/* Chevron */
+.chevron::before {
+  content: "";
+  border-style: solid;
+  border-width: 1px 1px 0 0;
+
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  transform: rotate(45deg);
+}

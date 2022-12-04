@@ -1,4 +1,5 @@
 import CardBig from "../components/CardBig";
+import Chevron from "../icons/Chevron";
 import PlayButton from "../icons/PlayButton";
 
 export default function HomePage() {
@@ -30,8 +31,20 @@ export default function HomePage() {
           large: "https://www.apple.com/v/home/aw/images/heroes/iphone-14/hero_iphone14__fjmsqstr1ceq_largetall.jpg",
         }}
       >
-        <h2>iPhone 14</h2>
-        <h3>Big and bigger.</h3>
+        <div className="card-big--iphone14-content">
+          <h2>iPhone 14</h2>
+          <h3>Big and bigger.</h3>
+          <div>
+            <a href="/iphone-14">
+              Learn more
+              <Chevron />
+            </a>
+            <a href="/shop/iphone14">
+              Buy
+              <Chevron />
+            </a>
+          </div>
+        </div>
       </CardBig>
     </div>
   );

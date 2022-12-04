@@ -14,7 +14,7 @@ export default function PlayButton({
   const totalSize = size || 24;
 
   return (
-    <div
+    <span
       className={`play-button ${className ? className : ""}`}
       style={{
         width: totalSize + "px",
@@ -26,7 +26,7 @@ export default function PlayButton({
         marginRight: marginRight + "px",
       }}
     >
-      <div className="play-button-triangle" />
-    </div>
+      <span className="play-button-triangle" />
+    </span>
   );
 }

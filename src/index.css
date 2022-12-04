@@ -101,7 +101,7 @@ li {
   background-position: center;
 }
 
-.card-big--accessibility {
+.card-big {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,36 +109,57 @@ li {
   height: inherit;
   text-align: center;
   white-space: nowrap;
-  color: white;
-  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
-.card-big--accessibility > h2 {
+.card-big--accessibility {
+  color: white;
+}
+
+.card-big h2 {
   font-size: 54px;
   letter-spacing: -2px;
   font-weight: 600;
 }
 
-.card-big--accessibility > h3 {
+.card-big h3 {
   font-size: 27px;
   font-weight: normal;
   letter-spacing: -0.4px;
   margin-top: 5px;
 }
 
-.card-big--accessibility > a {
+.card-big--iphone14-content {
+  margin-top: -40%;
+}
+
+.card-big a {
   font-size: 20px;
-
   font-weight: normal;
-  color: white;
-
   margin-top: 15px;
+}
+
+.card-big--accessibility a {
+  color: white;
   display: flex;
   align-items: center;
   gap: 10px;
   justify-content: center;
 }
 
-.card-big--accessibility > a:hover {
+.card-big a:hover {
   text-decoration: underline;
+}
+
+.card-big--iphone14-content > div {
+  display: flex;
+  gap: 50px;
+}
+
+.card-big--iphone14-content a {
+  color: #0066cc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
