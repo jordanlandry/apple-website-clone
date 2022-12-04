@@ -1,0 +1,18 @@
+.play-button {
+  margin: 0;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-button-triangle {
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 50%);
+  clip-path: polygon(0 0, 0 100%, 100% 50%);
+
+  margin-left: 10%;
+  width: 33%;
+  height: 33%;
+  background-color: black;
+}

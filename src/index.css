@@ -66,17 +66,18 @@ li {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 
-  gap: min(1.7vw, 30px);
+  /* gap: min(1.7vw, 30px); */
+  gap: 27px;
 }
 
 .navbar--wrapper > li {
   margin: 0;
   transition: 0.15s;
-  font-size: 12.5px;
+  font-size: 12px;
   height: inherit;
   display: flex;
 
-  filter: brightness(0.8);
+  filter: brightness(0.6);
 }
 
 .navbar--wrapper > li > * {
@@ -89,7 +90,7 @@ li {
 }
 
 .navbar--wrapper > li:hover {
-  filter: brightness(1);
+  filter: brightness(0.8);
 }
 
 /* Cards */
@@ -108,7 +109,7 @@ li {
   z-index: -1;
 }
 
-.card-big--heading-accessibility {
+.card-big--accessibility {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -117,14 +118,35 @@ li {
   text-align: center;
   white-space: nowrap;
   color: white;
+  margin-top: 20px;
 }
 
-.card-big--heading-accessibility > h2 {
-  font-size: 56px;
+.card-big--accessibility > h2 {
+  font-size: 54px;
+  letter-spacing: -2px;
   font-weight: 600;
 }
 
-.card-big--heading-accessibility > h3 {
-  font-size: px;
-  font-weight: 600;
+.card-big--accessibility > h3 {
+  font-size: 27px;
+  font-weight: normal;
+  letter-spacing: -0.4px;
+  margin-top: 5px;
+}
+
+.card-big--accessibility > a {
+  font-size: 20px;
+
+  font-weight: normal;
+  color: white;
+
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.card-big--accessibility > a:hover {
+  text-decoration: underline;
 }

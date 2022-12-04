@@ -13,3 +13,16 @@ export interface CardTypeProps extends CardType {
   children?: React.ReactNode;
   className?: string;
 }
+
+export interface IconProps {
+  className?: string;
+  size?: number;
+  color?: string;
+
+  // Style
+  margin?: number;
+  marginLeft?: number;
+  marginRight?: number;
+  marginTop?: number;
+  marginBottom?: number;
+}
