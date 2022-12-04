@@ -139,7 +139,7 @@ li {
 }
 
 .card-big--iphone14-content {
-  margin-top: -40%;
+  transform: translateY(-145%);
 }
 
 .card-big--accessibility a {
@@ -180,4 +180,16 @@ li {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.card-small a {
+  color: #0066cc;
+}
+
+.card-small a:hover {
+  text-decoration: underline;
+}
+
+.card-small a:nth-of-type(2) {
+  margin-left: 28px;
 }
