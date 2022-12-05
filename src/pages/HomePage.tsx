@@ -14,6 +14,7 @@ export default function HomePage() {
       subheading={card.subheading}
       links={card.links}
       backgroundImages={card.backgroundImages}
+      headingColor={card.headingColor}
     />
   ));
 

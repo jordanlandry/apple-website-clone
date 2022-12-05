@@ -15,6 +15,7 @@ const frontPageSmallIcons: CardSmallType[] = [
         url: "/shop/gifts",
       },
     ],
+    headingColor: "white",
   },
   {
     heading: "iPhone 14 Pro",
@@ -34,6 +35,7 @@ const frontPageSmallIcons: CardSmallType[] = [
         url: "/shop/iphone-14-pro",
       },
     ],
+    headingColor: "white",
   },
   {
     heading: "iPad",
@@ -53,6 +55,7 @@ const frontPageSmallIcons: CardSmallType[] = [
         url: "/shop/ipad",
       },
     ],
+    headingColor: "black",
   },
   {
     heading: "AirPods",
@@ -71,6 +74,7 @@ const frontPageSmallIcons: CardSmallType[] = [
         url: "/shop/airpods",
       },
     ],
+    headingColor: "black",
   },
   {
     heading: "",
@@ -93,6 +97,7 @@ const frontPageSmallIcons: CardSmallType[] = [
         url: "/shop/apple-watch-series-8",
       },
     ],
+    headingColor: "white",
   },
   {
     heading: "iPad Pro",
@@ -112,6 +117,7 @@ const frontPageSmallIcons: CardSmallType[] = [
         url: "/shop/ipad-pro",
       },
     ],
+    headingColor: "white",
   },
 ];
 

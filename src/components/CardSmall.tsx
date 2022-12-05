@@ -10,6 +10,7 @@ export default function CardSmall({
   subheading,
   links,
   backgroundImages,
+  headingColor,
 }: CardSmallProps) {
   const sizes = ["small", "medium", "large"];
   const [imageSize, imageHeight] = useImageWidth()!;
@@ -20,8 +21,8 @@ export default function CardSmall({
       <>
         {before}
         <div className="card-small--content" style={{ height: `${imageHeight}px`, backgroundImage: `url(${image})` }}>
-          <h2>{heading}</h2>
-          <h3>{subheading}</h3>
+          <h2 className={`text-${headingColor}`}>{heading}</h2>
+          <h3 className={`text-${headingColor}`}>{subheading}</h3>
           <div>
             {links!.map((link, index) => (
               <a key={index} href={link.url}>

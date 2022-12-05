@@ -34,6 +34,14 @@ li {
 }
 
 /* Globals */
+.text-white {
+  color: white;
+}
+
+.text-black {
+  color: black;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -67,6 +75,8 @@ li {
 
   /* gap: min(1.7vw, 30px); */
   gap: 27px;
+
+  z-index: 10000;
 }
 
 .navbar--wrapper > li {
@@ -139,7 +149,13 @@ li {
 }
 
 .card-big--iphone14-content {
-  transform: translateY(-145%);
+  transform: translateY(-155%);
+}
+
+@media screen and (max-width: 734px) {
+  .card-big--iphone14-content {
+    transform: translateY(-145%);
+  }
 }
 
 .card-big--accessibility a {
@@ -192,4 +208,18 @@ li {
 
 .card-small a:nth-of-type(2) {
   margin-left: 28px;
+}
+
+.card-small h2 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+  margin-top: 10px;
+}
+
+.card-small h3 {
+  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: -0.4px;
+  margin-top: 5px;
 }
