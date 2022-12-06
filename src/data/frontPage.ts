@@ -16,6 +16,7 @@ const frontPageSmallIcons: CardSmallType[] = [
       },
     ],
     headingColor: "white",
+    className: "card-small--emoji",
   },
   {
     heading: "iPhone 14 Pro",
@@ -75,6 +76,7 @@ const frontPageSmallIcons: CardSmallType[] = [
       },
     ],
     headingColor: "black",
+    className: "card-small--airpods",
   },
   {
     heading: "",

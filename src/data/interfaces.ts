@@ -18,6 +18,7 @@ export interface CardSmallType extends CardType {
   subheading?: string;
   links?: link[];
   headingColor: string;
+  className?: string;
 }
 
 // Props

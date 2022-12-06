@@ -15,12 +15,16 @@ export default function CardSmall({
   const sizes = ["small", "medium", "large"];
   const [imageSize, imageHeight] = useImageWidth()!;
   const image = backgroundImages[sizes[imageSize] as keyof typeof backgroundImages];
+  console.log(className);
 
   return (
     <div className={`card-small ${className ? className : ""}`}>
       <>
         {before}
-        <div className="card-small--content" style={{ height: `${imageHeight}px`, backgroundImage: `url(${image})` }}>
+        <div
+          className={`card-small--content ${className ? className : ""}--content`}
+          style={{ height: `${imageHeight}px`, backgroundImage: `url(${image})` }}
+        >
           <h2 className={`text-${headingColor}`}>{heading}</h2>
           <h3 className={`text-${headingColor}`}>{subheading}</h3>
           <div>

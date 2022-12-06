@@ -19,6 +19,12 @@
   font-family: "SF Pro Display", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
+div {
+  max-width: 3000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 body {
   overflow-x: hidden;
   margin: 0;
@@ -62,6 +68,7 @@ li {
   position: fixed;
   top: 0;
   width: 100vw;
+  left: 0;
   height: var(--nav-height);
 
   display: flex;
@@ -169,6 +176,7 @@ li {
 .card-big-top-text > div > div {
   display: flex;
   gap: 50px;
+  justify-content: center;
 }
 
 .card-big-top-text a {
@@ -192,10 +200,15 @@ li {
 
 .card-small--content {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
   height: inherit;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  text-align: center;
 }
 
 .card-small a {
@@ -211,15 +224,51 @@ li {
 }
 
 .card-small h2 {
-  font-size: 24px;
+  font-size: 40px;
   font-weight: 600;
   letter-spacing: -0.4px;
   margin-top: 10px;
 }
 
 .card-small h3 {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: normal;
   letter-spacing: -0.4px;
   margin-top: 5px;
+}
+
+.card-small--emoji--content h2 {
+  transform: translateY(500px);
+}
+
+.card-small--emoji--content h3 {
+  transform: translateY(500px);
+  width: min(75%, 400px);
+}
+
+.card-small--emoji--content a {
+  transform: translateY(500px);
+  display: block;
+}
+
+@media screen and (max-width: 734px) {
+  .card-small--emoji--content h2 {
+    transform: translateY(350px);
+  }
+
+  .card-small--emoji--content h3 {
+    transform: translateY(350px);
+  }
+
+  .card-small--emoji--content a {
+    transform: translateY(350px);
+  }
+}
+
+.card-small--airpods--content::before {
+  content: "";
+  background: url("https://www.apple.com/v/home/aw/images/logos/airpods-holiday-2022/promo_logo_airpods_holiday__uzkw355klvmy_medium.png")
+    no-repeat;
+  width: 30px;
+  height: 33px;
 }
