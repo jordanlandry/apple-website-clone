@@ -41,5 +41,57 @@
   background-clip: text;
 }
 
-.intro-text-background {
+.iphone-color-item {
+  color: white;
+}
+
+.iphone-14-color-container {
+  margin: 2500px 0;
+  display: flex;
+  align-items: center;
+}
+
+.iphone-14-color-container > img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.iphone-14-color-container > ul > .active {
+  color: white;
+}
+
+.iphone-color-item {
+  margin: 2rem;
+
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.5s;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.iphone-fade-out {
+  animation: fade-out 0.5s ease-in-out forwards;
+}
+
+.iphone-fade-in {
+  animation: fade-in 0.5s ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
