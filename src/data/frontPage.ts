@@ -100,6 +100,7 @@ const frontPageSmallIcons: CardSmallType[] = [
       },
     ],
     headingColor: "white",
+    className: "small-card--watch--content",
   },
   {
     heading: "iPad Pro",
@@ -120,6 +121,7 @@ const frontPageSmallIcons: CardSmallType[] = [
       },
     ],
     headingColor: "white",
+    className: "small-card--ipad-pro",
   },
 ];
 
