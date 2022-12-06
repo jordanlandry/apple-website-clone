@@ -44,3 +44,16 @@ export interface IconProps {
   marginTop?: number;
   marginBottom?: number;
 }
+
+export interface CarouselProps {
+  items: CarouselItemProps[];
+  className?: string;
+}
+
+export interface CarouselItemProps {
+  id: number;
+  image: string;
+  genre: string;
+  heading: string;
+  link: string;
+}

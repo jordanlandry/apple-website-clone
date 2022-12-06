@@ -28,6 +28,8 @@ div {
 body {
   overflow-x: hidden;
   margin: 0;
+  background-color: black;
+  height: 1000vh;
 }
 
 a {
@@ -50,6 +52,10 @@ li {
 
 .pointer {
   cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
 
 .capitalize {
