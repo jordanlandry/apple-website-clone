@@ -58,6 +58,11 @@ li {
   display: none;
 }
 
+.invisible {
+  opacity: 0;
+  width: 0;
+}
+
 .capitalize {
   text-transform: capitalize;
 }

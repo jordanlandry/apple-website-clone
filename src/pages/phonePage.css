@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 #iphone-14-intro-video {
@@ -26,7 +27,7 @@
   top: 50%;
 
   color: transparent;
-  background: url("https://www.apple.com/v/iphone-14-pro/c/images/overview/hero/hero_background__ep8j6kim532a_large.png");
+  background: url("../assets/images/ihone-14-intro-text-background.jpg");
 
   -webkit-background-clip: text;
 
@@ -46,7 +47,7 @@
 }
 
 .iphone-14-color-container {
-  margin: 2500px 0;
+  margin: 3000px 0 500px 0;
   display: flex;
   align-items: center;
 }
@@ -62,10 +63,10 @@
 }
 
 .iphone-color-item {
-  margin: 2rem;
+  margin: 1.5rem;
 
   cursor: pointer;
-  font-size: 24px;
+  font-size: 21px;
   transition: 0.5s;
   color: rgba(255, 255, 255, 0.25);
 }
@@ -76,6 +77,17 @@
 
 .iphone-fade-in {
   animation: fade-in 0.5s ease-in-out forwards;
+}
+
+.iphone-14-color-container__text {
+  color: #cecece;
+  font-size: 32px;
+  font-weight: 600;
+  width: 490px;
+}
+
+.iphone-14-color-container__text p:first-child {
+  margin-bottom: 26px;
 }
 
 @keyframes fade-out {
