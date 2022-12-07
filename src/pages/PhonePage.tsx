@@ -88,7 +88,13 @@ export default function PhonePage() {
           src="https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_space_black__ev5ncqabz7ma_large.jpg"
         />
 
-        <ul>
+        <ul
+          style={{
+            display: "block",
+            margin: "0 auto",
+            transform: "translateX(350px)",
+          }}
+        >
           <li
             className={`pointer iphone-color-item ${iphoneColor === "purple" ? "active" : ""}`}
             onClick={() => changeIphoneCol("purple")}
