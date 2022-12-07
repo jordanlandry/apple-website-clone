@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import DynamicIslandSection from "../components/DynamicIslandSection";
 import clamp from "../helpers/clamp";
 import useImageWidth from "../hooks/useImageWidth";
 import useInterval from "../hooks/useInterval";
@@ -23,11 +24,7 @@ export default function PhonePage() {
   const [currentVideoTime, setCurrentVideoTime] = useState(0);
   currentVideoTimeRef.current = currentVideoTime;
 
-  const [w, setW] = useState(70);
   const [colorHasBeenClicked, setColorHasBeenClicked] = useState(false);
-  // const oToDynamicIsland = (
-
-  // );
 
   const showIntroTextAt = 1000;
   const hideIntroTextAt = 2500;
@@ -55,57 +52,6 @@ export default function PhonePage() {
     });
   }, 3000);
 
-  const dynamicIslandTextRef = useRef(null);
-  const dynamicIslandTextInView = useInView(dynamicIslandTextRef);
-  // const [dynamicIslandTextSize, setDynamicIslandTextSize] = useState(120);
-
-  const dynamicIslandProperties = {
-    minTextSize: 120,
-    maxTextSize: 200,
-    minY: 500, // Lower is higher because it's the distance from the top of the page
-    maxY: 200,
-
-    minYSize: 70,
-    maxYSize: 125,
-
-    minXSize: 70,
-    maxXSize: 250,
-
-    minBorderPx: 10,
-    maxBorderPx: 20,
-  };
-
-  // @ts-ignore
-  const dynamicIslandY = dynamicIslandTextRef.current?.getBoundingClientRect().y;
-  const dynamicIslandPercent =
-    (dynamicIslandY - dynamicIslandProperties.minY) / (dynamicIslandProperties.maxY - dynamicIslandProperties.minY);
-
-  const dynamicIslandTextSize = clamp(
-    dynamicIslandProperties.minTextSize + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minTextSize,
-    dynamicIslandProperties.maxTextSize
-  );
-
-  const dynamicIslandHeight = clamp(
-    dynamicIslandProperties.minYSize + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minYSize,
-    dynamicIslandProperties.maxYSize
-  );
-
-  const dynamicIslandWidth = clamp(
-    dynamicIslandProperties.minXSize + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minXSize,
-    dynamicIslandProperties.maxXSize
-  );
-
-  const dynamicIslandBorderPx = clamp(
-    dynamicIslandProperties.minBorderPx + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minBorderPx,
-    dynamicIslandProperties.maxBorderPx
-  );
-
-  console.log(dynamicIslandWidth);
-
   return (
     <div className="iphone-14-page">
       <video
@@ -115,10 +61,10 @@ export default function PhonePage() {
         src={videoSrc}
         onTimeUpdate={() => setCurrentVideoTime((prev) => prev + 1)}
       />
-      {/* <div className="intro-text-background"></div> */}
+
       <div
         className={`intro-text ${introTextVisible ? "" : "hidden"}`}
-        style={{ backgroundPositionY: `${introTextScrollPercent * 80}%` }}
+        style={{ backgroundPositionY: `${introTextScrollPercent * 100}%` }}
       >
         A Magical new way to interact with iPhone. Groundbreaking safety features designed to save lives. An innovative
         48MP camera for mine-blowing detail. All powered by the ultimate smartphone chip.
@@ -176,36 +122,7 @@ export default function PhonePage() {
           6.1″ and 6.7″ display sizes.2 All in four Pro colors.
         </p>
       </div>
-      {/* The Apple website doesn't use the O as a letter which can be an accessibility issue
-          so I am using an O as an invisible character  
-
-          ~~~ still a very minor accessibility issue with it, so I may use a photo that says iPhone instead
-          and use invisible text to say iPhone, so that it is still accessible to screen readers          
-          */}
-      <span style={{ marginTop: "500px", fontSize: `${dynamicIslandTextSize}px` }} ref={dynamicIslandTextRef}>
-        <span>
-          Meet the
-          <br />
-        </span>
-        <span>
-          new face
-          <br />
-        </span>
-        <span style={{ display: "flex", alignItems: "center", gap: "1px" }}>
-          of iPh<span className="invisible">o</span>
-          <span
-            style={{
-              width: `${dynamicIslandWidth}px`,
-              height: `${dynamicIslandHeight}px`,
-              borderRadius: "70px",
-              border: `${dynamicIslandBorderPx}px solid white`,
-              display: "inline-block",
-              marginTop: "20px",
-            }}
-          ></span>
-          ne.
-        </span>
-      </span>
+      <DynamicIslandSection />
     </div>
   );
 }
