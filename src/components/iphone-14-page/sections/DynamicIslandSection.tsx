@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import clamp from "../helpers/clamp";
-import useInView from "../hooks/useInView";
+import clamp from "../../../helpers/clamp";
+import useInView from "../../../hooks/useInView";
 
 export default function DynamicIslandSection() {
   const dynamicIslandTextRef = useRef(null);
-  const dynamicIslandTextInView = useInView(dynamicIslandTextRef);
-  // const [dynamicIslandTextSize, setDynamicIslandTextSize] = useState(120);
 
   const dynamicIslandProperties = {
     minTextSize: 120,
@@ -23,6 +21,7 @@ export default function DynamicIslandSection() {
     maxBorderPx: 15,
   };
 
+  // Sizing Variables
   // @ts-ignore
   const dynamicIslandY = dynamicIslandTextRef.current?.getBoundingClientRect().y;
   const dynamicIslandPercent =
@@ -55,6 +54,7 @@ export default function DynamicIslandSection() {
   const showDynamicIslandVideo = dynamicIslandWidth === dynamicIslandProperties.maxXSize;
   const dynamicIslandVideoRef = useRef<null | HTMLVideoElement>(null);
 
+  // Replay the video at the beginning everytime it is shown
   useEffect(() => {
     if (dynamicIslandVideoRef.current) {
       dynamicIslandVideoRef.current.currentTime = 0;

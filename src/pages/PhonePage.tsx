@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import DynamicIslandSection from "../components/DynamicIslandSection";
+import BionicChipSection from "../components/iphone-14-page/sections/BionicChipSection";
+import DynamicIslandSection from "../components/iphone-14-page/sections/DynamicIslandSection";
 import clamp from "../helpers/clamp";
 import useImageWidth from "../hooks/useImageWidth";
 import useInterval from "../hooks/useInterval";
@@ -129,6 +130,7 @@ export default function PhonePage() {
         </p>
       </div>
       <DynamicIslandSection />
+      <BionicChipSection />
     </div>
   );
 }

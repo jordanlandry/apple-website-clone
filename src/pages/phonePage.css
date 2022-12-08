@@ -115,3 +115,8 @@
 .dynamic-island-max-size {
   animation: fade-out 0.2s ease-in-out forwards;
 }
+
+.dark-blob {
+  -webkit-clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 29% 43%, 74% 29%);
+  clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 29% 43%, 74% 29%);
+}
