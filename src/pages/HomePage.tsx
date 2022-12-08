@@ -6,6 +6,8 @@ import Chevron from "../icons/Chevron";
 import PlayButton from "../icons/PlayButton";
 
 export default function HomePage() {
+  document.getElementById("body")!.style.backgroundColor = "#fff";
+
   const smallCardElements = frontPageSmallIcons.map((card: CardSmallProps, index: number) => (
     <CardSmall
       key={index}

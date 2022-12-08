@@ -29,7 +29,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   background-color: white;
-  height: 1000vh;
+  padding-bottom: 1000px;
 }
 
 a {

@@ -21,6 +21,23 @@ export interface CardSmallType extends CardType {
   className?: string;
 }
 
+// Iphone 14 pro page
+export interface MovingPictureType {
+  id: number;
+  image: string;
+  imgAlt: string;
+  text: string;
+  startX: number;
+  startY: number;
+  endX: number;
+  endY: number;
+}
+
+export interface MovingPictureProps extends MovingPictureType {
+  scrollProgress: number;
+  offset: number;
+}
+
 // Props
 export interface CardTypeProps extends CardType {
   children?: React.ReactNode;

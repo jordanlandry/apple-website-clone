@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import BionicChipSection from "../components/iphone-14-page/sections/BionicChipSection";
 import DynamicIslandSection from "../components/iphone-14-page/sections/DynamicIslandSection";
+import PictureTabSection from "../components/iphone-14-page/sections/PictureTabSection";
 import clamp from "../helpers/clamp";
 import useImageWidth from "../hooks/useImageWidth";
 import useInterval from "../hooks/useInterval";
@@ -10,6 +11,7 @@ import "./phonePage.css";
 
 export default function PhonePage() {
   document.title = "iPhone 14 Pro and iPhone 14 Pro Max";
+  document.getElementById("body")!.style.backgroundColor = "#000";
 
   const sizes = ["small", "medium", "large"];
   const iphoneAnimVideoBase =
@@ -130,6 +132,7 @@ export default function PhonePage() {
         </p>
       </div>
       <DynamicIslandSection />
+      <PictureTabSection />
       <BionicChipSection />
     </div>
   );

@@ -18,8 +18,6 @@ export default function BionicChipSection() {
 
   const maxTransform = 500;
 
-  console.log(startPercent * window.innerHeight, positionY, percent);
-
   return (
     <div
       ref={bionicChipSectionRef}
