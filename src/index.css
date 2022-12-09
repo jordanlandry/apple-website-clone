@@ -55,7 +55,7 @@ li {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .invisible {
@@ -68,6 +68,13 @@ li {
 }
 
 .btn-blank {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.unstyled-button {
   background: transparent;
   border: none;
   outline: none;
@@ -90,8 +97,6 @@ li {
 
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
-
-  /* gap: min(1.7vw, 30px); */
   gap: 27px;
 
   z-index: 10000;
@@ -118,6 +123,77 @@ li {
 
 .navbar--wrapper > li:hover {
   filter: brightness(0.8);
+}
+
+.nav--hide-animation {
+  animation: hide-navbar-items 0.2s ease-in-out forwards;
+}
+
+.nav--show-animation {
+  animation: show-navbar-items 0.2s ease-in-out forwards;
+}
+
+.navbar--search {
+  position: fixed;
+  width: 100%;
+  height: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000000;
+  top: calc(var(--nav-height) / 2);
+  transform: translateY(-50%);
+}
+
+.navbar--search > input {
+  width: 50%;
+  height: 100%;
+  padding: 0 10px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.navbar--search-animation {
+  animation: show-navbar-search 0.2s forwards;
+}
+
+@keyframes show-navbar-search {
+  from {
+    opacity: 0;
+    transform: translateX(50px) translateY(-50%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(-50%);
+  }
+}
+
+@keyframes hide-navbar-items {
+  from {
+    opacity: 1;
+    tranform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes show-navbar-items {
+  from {
+    opacity: 0;
+    tranform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Cards */

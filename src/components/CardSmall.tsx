@@ -15,7 +15,6 @@ export default function CardSmall({
   const sizes = ["small", "medium", "large"];
   const [imageSize, imageHeight] = useImageWidth()!;
   const image = backgroundImages[sizes[imageSize] as keyof typeof backgroundImages];
-  console.log(className);
 
   return (
     <div className={`card-small ${className ? className : ""}`}>

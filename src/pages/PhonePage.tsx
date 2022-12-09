@@ -53,7 +53,7 @@ export default function PhonePage() {
       if (colorHasBeenClicked) return prev;
       return prev + 1 >= iphoneColors.length ? 0 : prev + 1;
     });
-  }, 3000);
+  }, 2000);
 
   return (
     <div className="iphone-14-page">
