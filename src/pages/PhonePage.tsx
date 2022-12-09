@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import BionicChipSection from "../components/iphone-14-page/sections/BionicChipSection";
-import DynamicIslandSection from "../components/iphone-14-page/sections/DynamicIslandSection";
-import PictureTabSection from "../components/iphone-14-page/sections/PictureTabSection";
+import BionicChipSection from "../components/iphone-14-pro-page/sections/BionicChipSection";
+import DynamicIslandSection from "../components/iphone-14-pro-page/sections/DynamicIslandSection";
+import PictureTabSection from "../components/iphone-14-pro-page/sections/PictureTabSection";
 import clamp from "../helpers/clamp";
 import useImageWidth from "../hooks/useImageWidth";
 import useInterval from "../hooks/useInterval";
