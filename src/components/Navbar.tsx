@@ -45,7 +45,6 @@ export default function Navbar() {
     setIsSearching(false);
     let counter = 0;
     const interval = setInterval(() => {
-      console.log(counter, ulRef.current?.children.length!);
       if (counter >= ulRef.current?.children.length!) return;
 
       // I want to show them from left to right so I can use counter as the index
@@ -56,7 +55,6 @@ export default function Navbar() {
     }, hideElementWaitTimeMs);
 
     setTimeout(() => {
-      console.log(ulRef.current?.children.length! * hideElementWaitTimeMs);
       clearInterval(interval);
     }, ulRef.current?.children.length! * (hideElementWaitTimeMs + 15));
   };
@@ -166,7 +164,44 @@ export default function Navbar() {
                 }}
               />
             </button>
+            <div
+              style={{
+                position: "fixed",
+                backgroundColor: "white",
+                left: "50%",
+                transform: "translateX(-50%)",
+                height: "150px",
+                width: "555px",
+                top: "var(--nav-height)",
+                padding: "10px",
+                borderRadius: "0 0 18px 18px",
+              }}
+            >
+              QUICK LINKS
+              <ul>
+                <li>
+                  <a href="/iphone-14">iPhone 14</a>
+                </li>
+                <li>
+                  <a href="/iphone-14-pro">iPhone 14 Pro</a>
+                </li>
+              </ul>
+            </div>
           </div>
+          {isSearching ? (
+            <div
+              onClick={reverseSearchAnimation}
+              style={{
+                position: "fixed",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
+                left: "0",
+                top: "0",
+                height: "100vh",
+                width: "100vw",
+                zIndex: 1,
+              }}
+            ></div>
+          ) : null}
         </div>
       </>
     </nav>

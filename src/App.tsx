@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/iphone-14" element={<PhonePage />} />
+          <Route path="/iphone-14-pro" element={<PhonePage />} />
         </Routes>
       </BrowserRouter>
     </div>
