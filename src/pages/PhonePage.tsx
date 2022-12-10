@@ -14,14 +14,9 @@ export default function PhonePage() {
   document.getElementById("body")!.style.backgroundColor = "#000";
 
   const sizes = ["small", "medium", "large"];
-  const iphoneAnimVideoBase =
-    "https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/hero/";
 
-  const FORMAT = ".mp4";
   const [size] = useImageWidth()!;
   const scrollY = useScroll();
-
-  const videoSrc = iphoneAnimVideoBase + sizes[size] + FORMAT;
 
   const currentVideoTimeRef = useRef(0);
   const [currentVideoTime, setCurrentVideoTime] = useState(0);
@@ -61,7 +56,7 @@ export default function PhonePage() {
         id="iphone-14-intro-video"
         autoPlay
         muted
-        src={videoSrc}
+        src={`https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/hero/${sizes[size]}.mp4`}
         onTimeUpdate={() => setCurrentVideoTime((prev) => prev + 1)}
       />
 
@@ -76,28 +71,22 @@ export default function PhonePage() {
       <div className="iphone-14-color-container" style={{}}>
         <img
           className={`iphone-fade-${iphoneColor === "purple" ? "in" : "out"}`}
-          src="https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_deep_purple__du23dbfjl1km_large.jpg"
+          src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_deep_purple__du23dbfjl1km_${sizes[size]}.jpg`}
         />
         <img
           className={`iphone-fade-${iphoneColor === "gold" ? "in" : "out"}`}
-          src="https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_gold__e2kfk9zl5eie_large.jpg"
+          src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_gold__e2kfk9zl5eie_${sizes[size]}.jpg`}
         />
         <img
           className={`iphone-fade-${iphoneColor === "silver" ? "in" : "out"}`}
-          src="https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_silver__eph35go3eiy6_large.jpg"
+          src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_silver__eph35go3eiy6_${sizes[size]}.jpg`}
         />
         <img
           className={`iphone-fade-${iphoneColor === "black" ? "in" : "out"}`}
-          src="https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_space_black__ev5ncqabz7ma_large.jpg"
+          src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/colors/gallery_space_black__ev5ncqabz7ma_${sizes[size]}.jpg`}
         />
 
-        <ul
-          style={{
-            display: "block",
-            margin: "0 auto",
-            transform: "translateX(350px)",
-          }}
-        >
+        <ul>
           <li
             className={`pointer iphone-color-item ${iphoneColor === "purple" ? "active" : ""}`}
             onClick={() => changeIphoneCol("purple")}
@@ -131,7 +120,7 @@ export default function PhonePage() {
           6.1″ and 6.7″ display sizes.2 All in four Pro colors.
         </p>
       </div>
-      <DynamicIslandSection />
+      <DynamicIslandSection imageSize={sizes[size]} />
       <PictureTabSection />
       <BionicChipSection />
     </div>

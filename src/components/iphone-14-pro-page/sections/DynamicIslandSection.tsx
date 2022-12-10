@@ -1,23 +1,27 @@
 import { useEffect, useRef } from "react";
 import clamp from "../../../helpers/clamp";
 
-export default function DynamicIslandSection() {
+type Props = {
+  imageSize: string;
+};
+export default function DynamicIslandSection({ imageSize }: Props) {
   const dynamicIslandTextRef = useRef(null);
 
   const dynamicIslandProperties = {
-    minTextSize: 120,
+    minTextSize: 95,
     maxTextSize: 200,
     minY: window.innerHeight * 0.6, // Lower is higher because it's the distance from the top of the page
     maxY: window.innerHeight * 0.45,
 
-    minYSize: 70,
-    maxYSize: 100,
+    minYSize: 50,
+    maxYSize: 105,
 
-    minXSize: 70,
+    minXSize: 50,
     maxXSize: 300,
 
-    minBorderPx: 10,
-    maxBorderPx: 15,
+    minBorderPx: 8,
+    maxBorderPx: 17,
+    initialYOffset: -10,
   };
 
   // Sizing Variables
@@ -50,6 +54,10 @@ export default function DynamicIslandSection() {
     dynamicIslandProperties.maxBorderPx
   );
 
+  const dynamicIslandYOffset =
+    dynamicIslandProperties.initialYOffset -
+    clamp(dynamicIslandProperties.initialYOffset * dynamicIslandPercent, dynamicIslandProperties.initialYOffset, 0);
+
   const showDynamicIslandVideo = dynamicIslandWidth === dynamicIslandProperties.maxXSize;
   const dynamicIslandVideoRef = useRef<null | HTMLVideoElement>(null);
 
@@ -77,7 +85,14 @@ export default function DynamicIslandSection() {
           */}
       <span
         className={showDynamicIslandVideo ? "dynamic-island-max-size" : ""}
-        style={{ marginTop: "500px", fontSize: `${dynamicIslandTextSize}px`, marginRight: "235px" }}
+        style={{
+          marginTop: "500px",
+          fontSize: `${dynamicIslandTextSize}px`,
+          marginRight: "270px",
+          whiteSpace: "nowrap",
+          transform: "translateY(-6px)",
+          fontWeight: 600,
+        }}
         ref={dynamicIslandTextRef}
       >
         <span>
@@ -94,10 +109,11 @@ export default function DynamicIslandSection() {
             style={{
               width: `${dynamicIslandWidth}px`,
               height: `${dynamicIslandHeight}px`,
-              borderRadius: "70px",
+              borderRadius: "60px",
               border: `${dynamicIslandBorderPx}px solid white`,
               display: "inline-block",
-              marginTop: "25px",
+              marginTop: "35px",
+              transform: `translateY(${dynamicIslandYOffset}px)`,
             }}
           ></span>
           ne.
@@ -120,7 +136,7 @@ export default function DynamicIslandSection() {
           doing.
         </p>
         <img
-          src="https://www.apple.com/v/iphone-14-pro/c/images/overview/dynamic-island/dynamic_hw__wx47n1mguoi6_large.png"
+          src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/dynamic-island/dynamic_hw__wx47n1mguoi6_${imageSize}.png`}
           style={{
             margin: "auto",
             display: "block",
@@ -132,7 +148,6 @@ export default function DynamicIslandSection() {
           style={{
             display: "block",
             margin: "auto",
-            // transform: "translateY(-833px)",
             position: "relative",
             boxShadow: "0 0 50px 75px rgba(0, 0, 0, 1) ",
             width: "100%",
@@ -149,8 +164,8 @@ export default function DynamicIslandSection() {
             display: "block",
             margin: "auto",
           }}
-          src="https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/large.mp4"
-          autoPlay
+          src={`https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/${imageSize}.mp4`}
+          autoPlay={false}
         ></video>
       </div>
     </>

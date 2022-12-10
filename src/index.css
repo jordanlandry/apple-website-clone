@@ -5,6 +5,10 @@
   --nav-height: 44px;
 
   --text-col: white;
+
+  /* Sizes for media queries */
+  --size-medium: 1068px;
+  --size-small: 734px;
 }
 
 @font-face {
@@ -131,12 +135,6 @@ li {
   transform: translateY(-155%);
 }
 
-@media screen and (max-width: 734px) {
-  .card-big--iphone14-content {
-    transform: translateY(-145%);
-  }
-}
-
 .card-big--accessibility a {
   color: white;
   display: flex;
@@ -161,13 +159,6 @@ li {
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   margin: 12px;
-}
-
-@media screen and (max-width: 734px) {
-  .card-small-container {
-    grid-template-columns: repeat(1, 1fr);
-    margin: 0;
-  }
 }
 
 .card-small--content {
@@ -223,20 +214,6 @@ li {
   display: block;
 }
 
-@media screen and (max-width: 734px) {
-  .card-small--emoji--content h2 {
-    transform: translateY(350px);
-  }
-
-  .card-small--emoji--content h3 {
-    transform: translateY(350px);
-  }
-
-  .card-small--emoji--content a {
-    transform: translateY(350px);
-  }
-}
-
 .card-small--airpods--content::before {
   content: "";
   background: url("https://www.apple.com/v/home/aw/images/logos/airpods-holiday-2022/promo_logo_airpods_holiday__uzkw355klvmy_medium.png")
@@ -273,4 +250,29 @@ li {
   width: 137px;
   height: 52px;
   margin: 10px auto;
+}
+
+@media screen and (max-width: var(--size-small)) {
+  /* Big Cards */
+  .card-big--iphone14-content {
+    transform: translateY(-145%);
+  }
+
+  /* Small Cards */
+  .card-small-container {
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0;
+  }
+
+  .card-small--emoji--content h2 {
+    transform: translateY(350px);
+  }
+
+  .card-small--emoji--content h3 {
+    transform: translateY(350px);
+  }
+
+  .card-small--emoji--content a {
+    transform: translateY(350px);
+  }
 }

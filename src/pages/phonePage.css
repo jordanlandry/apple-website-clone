@@ -15,21 +15,18 @@
 }
 
 .intro-text {
-  color: #fff;
+  padding: 5px;
   font-size: 56px;
   font-weight: 600;
   position: fixed;
   margin-bottom: 1rem;
-  width: 823px;
-  /* transition: 0.5s; */
+  width: min(834px, 90%);
 
   transform: translateY(-50%);
   top: 50%;
 
   color: transparent;
   background: url("../assets/images/ihone-14-intro-text-background.jpg");
-
-  -webkit-background-clip: text;
 
   -webkit-text-fill-color: transparent;
 
@@ -39,6 +36,8 @@
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
+
+  -webkit-background-clip: text;
   background-clip: text;
 }
 
@@ -56,6 +55,12 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+
+.iphone-14-color-container > ul {
+  display: block;
+  margin: 0 auto;
+  transform: translateX(min(350px, 38vw));
 }
 
 .iphone-14-color-container > ul > .active {
@@ -118,4 +123,31 @@
 
 .moving-picture {
   position: relative;
+}
+
+@media screen and (max-width: 1068px) {
+  .intro-text {
+    font-size: 40px;
+  }
+
+  .iphone-14-color-container__text {
+    font-size: 24px;
+    width: 346px;
+  }
+}
+
+@media screen and (max-width: 734px) {
+  .intro-text {
+    font-size: 28px;
+  }
+
+  .iphone-14-color-container > ul {
+    transform: translateY(-450px);
+    margin: 50px;
+  }
+
+  .iphone-14-color-container__text {
+    font-size: 21px;
+    width: 70%;
+  }
 }
