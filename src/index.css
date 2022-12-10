@@ -81,19 +81,6 @@ li {
   cursor: pointer;
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--nav-height);
-  background: var(--nav-bg);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
-}
-
-/* Navbar */
-
 /* Cards */
 .card-big {
   height: inherit;
@@ -212,7 +199,7 @@ li {
   font-size: 40px;
   font-weight: 600;
   letter-spacing: -0.4px;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .card-small h3 {
