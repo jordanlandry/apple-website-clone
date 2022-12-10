@@ -88,6 +88,8 @@ li {
   width: 100%;
   height: var(--nav-height);
   background: var(--nav-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
 }
 
 /* Navbar */
@@ -97,8 +99,6 @@ li {
   margin: auto;
   height: var(--nav-height);
   color: var(--nav-color);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
   z-index: 10000;
   max-width: 1000px !important;
 }
