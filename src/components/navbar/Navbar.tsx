@@ -2,6 +2,7 @@ import { useState } from "react";
 import useWidth from "../../hooks/useWidth";
 import MobileNavbar from "./MobileNavbar";
 import WindowNavbar from "./WindowNavbar";
+import "./navbar.css";
 
 export interface NavProps {
   isSearching: boolean;
