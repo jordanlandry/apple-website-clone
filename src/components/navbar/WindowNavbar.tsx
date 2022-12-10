@@ -1,28 +1,29 @@
-import { useRef, useState } from "react";
-import useWidth from "../hooks/useWidth";
-import AppleLogo from "../icons/AppleLogo";
-import NavLink from "./NavLink";
-import useInterval from "../hooks/useInterval";
-import useKeybind from "../hooks/useKeybind";
-import XIcon from "../icons/XIcon";
+import { useRef } from "react";
+import NavLink from "../../components/NavLink";
+import useKeybind from "../../hooks/useKeybind";
+import AppleLogo from "../../icons/AppleLogo";
+import XIcon from "../../icons/XIcon";
+import { NavProps } from "./Navbar";
 
-export default function Navbar() {
-  const MAX_WIDTH = 834; // Max width before the navbar collapses into a hamburger menu
-  const width = useWidth();
-
-  const [isSearching, setIsSearching] = useState(false);
-
-  const [cartOpen, setCartOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const toggleIsSearching = () => setIsSearching((prev) => !prev);
-  const toggleCartOpen = () => setCartOpen((prev) => !prev);
-
+export default function WindowNavbar({
+  setIsSearching,
+  width,
+  MAX_WIDTH,
+  isSearching,
+  searchQuery,
+  setSearchQuery,
+  handleSearch,
+}: NavProps) {
   const ulRef = useRef<HTMLUListElement>(null);
 
-  const hideElementWaitTimeMs = 50;
+  const hideElementWaitTimeMs = 50; // Time to wait before removing the next element in the animation
+
+  // Animation when you click the search icon and enter search mode
+  // The animation removes one of the nav elements at a time from right to left
+  // The keyframes are in the index.css file called show-navbar-search
   const searchAnimation = () => {
     let counter = 0;
+
     const interval = setInterval(() => {
       if (counter >= ulRef.current?.children.length!) return;
 
@@ -35,13 +36,14 @@ export default function Navbar() {
       counter++;
     }, hideElementWaitTimeMs);
 
+    // Remove the interval after the animation is done
     setTimeout(() => {
       clearInterval(interval);
       setIsSearching(true);
-    }, ulRef.current?.children.length! * (hideElementWaitTimeMs + 15));
+    }, ulRef.current?.children.length! * (hideElementWaitTimeMs + 15)); // 15 is an offset to make sure the animation is done
   };
 
-  // Reverse the search animation
+  // Reverse the search animation when you click the X icon or press escape or click outside the search bar
   const reverseSearchAnimation = () => {
     setIsSearching(false);
     let counter = 0;
@@ -55,26 +57,15 @@ export default function Navbar() {
       counter++;
     }, hideElementWaitTimeMs);
 
+    // Remove the interval after the animation is done
     setTimeout(() => {
       clearInterval(interval);
-    }, ulRef.current?.children.length! * (hideElementWaitTimeMs + 15));
+    }, ulRef.current?.children.length! * (hideElementWaitTimeMs + 15)); // 15 is an offset to make sure the animation is done
   };
-
-  const handleSearch = () => {
-    console.log("Searching for", searchQuery);
-  };
-
-  useKeybind("Escape", () => {
-    reverseSearchAnimation();
-  });
-
-  useKeybind("Enter", () => {
-    if (isSearching) handleSearch();
-  });
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Every 100 milliseconds check if you are searching, then focus it
+  // Every 100 milliseconds check if you are searching, then focus the search bar
   const setSearchingFocus = setInterval(() => {
     if (isSearching) searchInputRef.current?.focus();
   }, 100);
@@ -86,10 +77,16 @@ export default function Navbar() {
     }, 101);
   }
 
+  // Keybinds
+  useKeybind("Escape", () => reverseSearchAnimation());
+  useKeybind("Enter", () => {
+    if (isSearching) handleSearch();
+  });
+
   return (
     <nav className="navbar">
       <>
-        <ul ref={ulRef} className={width > MAX_WIDTH ? "navbar--wrapper" : "navbar--wrapper-collapsed"}>
+        <ul ref={ulRef} className={"navbar--wrapper"}>
           <>
             <NavLink link="/">
               <AppleLogo />
@@ -114,7 +111,7 @@ export default function Navbar() {
                 src="https://www.apple.com/ac/globalnav/7/en_US/images/be15095f-5a20-57d0-ad14-cf4c638e223a/globalnav_search_image__cbllq1gkias2_large.svg"
               />
             </NavLink>
-            <NavLink action={toggleCartOpen}>
+            <NavLink>
               <img
                 alt="Cart"
                 src="https://www.apple.com/ac/globalnav/7/en_US/images/be15095f-5a20-57d0-ad14-cf4c638e223a/globalnav_bag_image__yzte50i47ciu_large.svg"
