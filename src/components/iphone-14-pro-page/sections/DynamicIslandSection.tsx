@@ -75,6 +75,10 @@ export default function DynamicIslandSection({ imageSize }: Props) {
     else dynamicIslandVideoRef.current!.pause();
   }
 
+  const maxScale = 5;
+  const minScale = 1;
+  const scale = dynamicIslandPercent * 10;
+
   return (
     <>
       {/* The Apple website doesn't use the O as a letter which can be an accessibility issue
