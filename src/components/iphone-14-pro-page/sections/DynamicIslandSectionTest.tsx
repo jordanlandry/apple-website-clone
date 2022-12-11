@@ -6,8 +6,8 @@ type Props = { imageSize: string };
 export default function DynamicIslandSectionTest({ imageSize }: Props) {
   const textElementRef = useRef(null);
 
-  const beginAnimationAt = 0.55; // 0.8 means the element is 80% from the top of the screen
-  const endAnimationAt = 0.05; // 0.1 means the element is 10% from the top of the screen
+  const beginAnimationAt = 0.65; // 0.8 means the element is 80% from the top of the screen
+  const endAnimationAt = 0.1; // 0.1 means the element is 10% from the top of the screen
 
   // @ts-ignore
   const textElementY = textElementRef.current?.getBoundingClientRect().y;
@@ -37,11 +37,16 @@ export default function DynamicIslandSectionTest({ imageSize }: Props) {
   }, [percentScroll]);
 
   const wrapperTransform =
-    imageSize === "small" ? "translate(-50%, -50%) scale(0.6)" : `translate(calc(-50% - 155px), 338px) scale(${scale})`;
+    imageSize === "small"
+      ? "translate(-56%, 10%) scale(0.6)"
+      : imageSize === "medium"
+      ? `translate(calc(-50% - 121px), 380px) scale(${scale * 0.78})`
+      : `translate(calc(-50% - 155px), 338px) scale(${scale})`;
 
   return (
     <div>
       <span
+        className={percentScroll >= 1 && imageSize !== "small" ? "dynamic-island-max-size" : ""}
         ref={textElementRef}
         style={{
           display: "inline-block",
@@ -67,6 +72,7 @@ export default function DynamicIslandSectionTest({ imageSize }: Props) {
           <span
             style={{
               width: `${width}px`,
+              zIndex: 500,
               height: "50px",
               borderRadius: "25px",
               border: "8px solid #cecece",
@@ -80,8 +86,8 @@ export default function DynamicIslandSectionTest({ imageSize }: Props) {
       <div className={percentScroll >= 1 ? "dynamic-island-video" : "invisible"}>
         <p
           style={{
-            fontSize: "32px",
-            width: `${imageSize === "small" ? "324px" : "546px"}}`,
+            fontSize: `${imageSize === "small" ? 21 : 32}px`,
+            width: `${imageSize === "small" ? 324 : 546}px`,
             margin: "0 auto 124px",
           }}
         >
@@ -90,11 +96,29 @@ export default function DynamicIslandSectionTest({ imageSize }: Props) {
           doing.
         </p>
         {imageSize !== "small" ? (
-          <video
-            ref={videoRef}
-            style={{ margin: "0 auto", display: "block" }}
-            src={`https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/${imageSize}.mp4`}
-          ></video>
+          <div style={{ boxShadow: "0 0 50px 75px rgba(0, 0, 0, 1) " }}>
+            <video
+              ref={videoRef}
+              style={{
+                margin: "0 auto",
+                display: "block",
+                borderRadius: "30px 30px 0 0",
+              }}
+              src={`https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/${imageSize}.mp4`}
+            ></video>
+            {imageSize !== "small" ? (
+              <img
+                src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/dynamic-island/dynamic_hw__wx47n1mguoi6_${imageSize}.png`}
+                style={{
+                  margin: "auto",
+                  display: "block",
+                  zIndex: 2,
+                  position: "relative",
+                  transform: "translateY(-100%)",
+                }}
+              />
+            ) : null}
+          </div>
         ) : (
           <img
             style={{
