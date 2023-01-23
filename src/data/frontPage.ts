@@ -1,3 +1,4 @@
+import properties from "../properties";
 import { CardSmallType } from "./interfaces";
 
 const frontPageSmallIcons: CardSmallType[] = [
@@ -29,7 +30,7 @@ const frontPageSmallIcons: CardSmallType[] = [
     links: [
       {
         title: "Learn more",
-        url: "/iphone-14-pro",
+        url: properties.basePath + "/iphone-14-pro",
       },
       {
         title: "Buy",

@@ -1,21 +1,36 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createContext, useEffect, useState } from "react";
 import Navbar from "./components/navbar/Navbar";
 import HomePage from "./pages/HomePage";
-import Iphone14Page from "./pages/Iphone14Page";
 import PhonePage from "./pages/PhonePage";
-import TestPage from "./pages/TestPage";
+import properties from "./properties";
+
+export const LocationContext = createContext<string | null>(null);
+export const SetLocationContext = createContext<any>(null);
 
 function App() {
+  const [location, setLocation] = useState('/');
+
+  interface Paths { [key: string]: JSX.Element }
+  const paths:Paths = {
+    '/': <HomePage />,
+    '/iphone-14-pro': <PhonePage />,
+    '/apple-website-clone/iphone-14-pro': <PhonePage />
+  }
+  // Change location when the url changes
+  useEffect(() => {
+    setLocation(window.location.pathname.replace(properties.basePath, ''))
+  }, [window.location.pathname])
+
+  console.log('location', location)
+
   return (
     <div className="App">
-      <Navbar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/iphone-14-pro" element={<PhonePage />} />
-          <Route path="/iphone-14" element={<Iphone14Page />} />
-        </Routes>
-      </BrowserRouter>
+      <LocationContext.Provider value={location}>
+        <SetLocationContext.Provider value={setLocation}>
+          <Navbar />
+          {paths[location]}
+        </SetLocationContext.Provider>
+      </LocationContext.Provider>
     </div>
   );
 }

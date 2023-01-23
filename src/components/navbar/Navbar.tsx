@@ -30,6 +30,7 @@ export default function Navbar() {
     console.log("Searching for", searchQuery);
   };
 
+
   return (
     <>
       {width > MAX_WIDTH ? (

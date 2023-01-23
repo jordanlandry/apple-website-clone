@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import BionicChipSection from "../components/iphone-14-pro-page/sections/BionicChipSection";
-import DynamicIslandSection from "../components/iphone-14-pro-page/sections/DynamicIslandSection";
 import DynamicIslandSectionTest from "../components/iphone-14-pro-page/sections/DynamicIslandSectionTest";
 import PictureTabSection from "../components/iphone-14-pro-page/sections/PictureTabSection";
-import clamp from "../helpers/clamp";
 import useImageWidth from "../hooks/useImageWidth";
 import useInterval from "../hooks/useInterval";
-import useInView from "../hooks/useInView";
 import useScroll from "../hooks/useScroll";
 import "./phonePage.css";
 

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { SetLocationContext } from "../App";
 import { CardSmallProps } from "../data/interfaces";
 import useImageWidth from "../hooks/useImageWidth";
 import Chevron from "../icons/Chevron";
@@ -16,6 +18,9 @@ export default function CardSmall({
   const [imageSize, imageHeight] = useImageWidth()!;
   const image = backgroundImages[sizes[imageSize] as keyof typeof backgroundImages];
 
+  const setLocation = useContext(SetLocationContext)
+  const handleClick = () => setLocation(links![0].url)
+
   return (
     <div className={`card-small ${className ? className : ""}`}>
       <>
@@ -28,7 +33,7 @@ export default function CardSmall({
           <h3 className={`text-${headingColor}`}>{subheading}</h3>
           <div>
             {links!.map((link, index) => (
-              <a key={index} href={link.url}>
+              <a key={index} href='#' onClick={handleClick}>
                 {link.title}
                 <Chevron />
               </a>

@@ -42,9 +42,9 @@ export default function MobileNavbar({}: NavProps) {
             <div />
           </span>
 
-          <span>
+          <NavLink link="/">
             <AppleLogo size={48} />
-          </span>
+          </NavLink>
           <span>Cart</span>
         </div>
       )}

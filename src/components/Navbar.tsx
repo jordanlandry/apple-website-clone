@@ -1,15 +1,19 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import useWidth from "../hooks/useWidth";
 import AppleLogo from "../icons/AppleLogo";
 import NavLink from "./NavLink";
 import useInterval from "../hooks/useInterval";
 import useKeybind from "../hooks/useKeybind";
 import XIcon from "../icons/XIcon";
+import { SetLocationContext } from "../App";
 
 export default function Navbar() {
   const MAX_WIDTH = 834; // Max width before the navbar collapses into a hamburger menu
   const width = useWidth();
 
+  const setLocation = useContext(SetLocationContext)
+
+  
   const [isSearching, setIsSearching] = useState(false);
 
   const [cartOpen, setCartOpen] = useState(false);

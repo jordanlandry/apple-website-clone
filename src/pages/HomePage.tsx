@@ -1,3 +1,4 @@
+import { useLocation } from "react-router";
 import CardBig from "../components/CardBig";
 import CardSmall from "../components/CardSmall";
 import frontPageSmallIcons from "../data/frontPage";
@@ -6,6 +7,7 @@ import Chevron from "../icons/Chevron";
 import PlayButton from "../icons/PlayButton";
 
 export default function HomePage() {
+  // Handle different routes for GH-pages
   document.getElementById("body")!.style.backgroundColor = "#fff";
 
   const smallCardElements = frontPageSmallIcons.map((card: CardSmallProps, index: number) => (
