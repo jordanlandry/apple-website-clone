@@ -252,8 +252,10 @@ li {
   margin: 10px auto;
 }
 
-@media screen and (max-width: 734px) {
+@media screen and (max-width: 768px) {
   /* Big Cards */
+
+  /* Push the text of the iphone-14 content down */
   .card-big--iphone14-content {
     transform: translateY(-145%);
   }

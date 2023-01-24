@@ -1,0 +1,26 @@
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #00000029;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.circle:hover {
+  background-color: #00000055;
+  box-shadow: 0 0 5px #00000055;
+}
+
+.circle-active {
+  background-color: #0000008f;
+}
+
+.circle-wrapper {
+  display: flex;
+}
+
+.movie-item {
+  width: 100vw;
+}

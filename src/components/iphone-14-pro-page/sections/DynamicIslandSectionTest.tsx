@@ -96,13 +96,24 @@ export default function DynamicIslandSectionTest({ imageSize }: Props) {
           doing.
         </p>
         {imageSize !== "small" ? (
-          <div style={{ boxShadow: "0 0 50px 75px rgba(0, 0, 0, 1) " }}>
+          <div
+            style={{
+              display: "block",
+              margin: "0 auto 500px auto",
+              position: "relative",
+              boxShadow: "0 0 50px 75px rgba(255, 0, 0, 1)",
+              width: "100%",
+              height: "100%",
+              zIndex: 3,
+            }}
+          >
             <video
               ref={videoRef}
               style={{
+                borderRadius: "30px 30px 0 0",
                 margin: "0 auto",
                 display: "block",
-                borderRadius: "30px 30px 0 0",
+                zIndex: 2,
               }}
               src={`https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/${imageSize}.mp4`}
             ></video>
@@ -113,8 +124,9 @@ export default function DynamicIslandSectionTest({ imageSize }: Props) {
                   margin: "auto",
                   display: "block",
                   zIndex: 2,
-                  position: "relative",
-                  transform: "translateY(-100%)",
+                  position: "absolute",
+                  left: "50%",
+                  transform: "translate(-50%, -100%)",
                 }}
               />
             ) : null}

@@ -1,0 +1,42 @@
+/* .iphone-14-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f2f2f2;
+} */
+
+.iphone-14--big-bigger {
+  margin-top: 100vh;
+}
+
+.big-bigger--text-wrapper {
+  display: flex;
+  justify-content: center;
+  perspective: 1600px;
+  perspective-origin: 50% 690px;
+}
+
+.big-bigger--text-wrapper > p {
+  font-size: 120px;
+  font-weight: 600;
+  transform-style: preserve-3d;
+  letter-spacing: -0.023em;
+  transition: all 600ms ease;
+}
+
+.big-bigger--text-wrapper > p:first-child {
+  /* transform: rotateY(-40deg) translate(150px, 175px); */
+}
+
+.big-bigger--text-wrapper > p:last-child {
+  /* transform: rotateY(40deg) translate(150px, 100px); */
+}
+
+.big-bigger--img-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
