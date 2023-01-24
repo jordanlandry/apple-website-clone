@@ -101,7 +101,6 @@ export default function DynamicIslandSectionTest({ imageSize }: Props) {
               display: "block",
               margin: "0 auto 500px auto",
               position: "relative",
-              boxShadow: "0 0 50px 75px rgba(255, 0, 0, 1)",
               width: "100%",
               height: "100%",
               zIndex: 3,
