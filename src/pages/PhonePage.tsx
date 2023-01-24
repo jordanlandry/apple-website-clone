@@ -48,8 +48,6 @@ export default function PhonePage() {
     });
   }, 2000);
 
-  console.log(size);
-
   return (
     <div className="iphone-14-page">
       <video
