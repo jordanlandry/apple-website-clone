@@ -23,7 +23,6 @@ export default function BionicChipSection() {
 
   const maxTransform = 600;
   const useSlide = width > 1;
-
   const scale = size === 0 ? 0.4 : size === 1 ? 0.6 : 0.8;
 
   return (

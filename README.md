@@ -34,5 +34,5 @@ Not every page is available on the site, I will be adding more pages in the futu
 
 ## Check it out yourself
 
-[Github Pages Link](jordanlandry.github.io/apple-website-clone)
+[Github Pages Link](https://jordanlandry.github.io/apple-website-clone/)
 Note for this project, I am using a state to handle routing instead of React Router. When a link is clicked, the state is updated and a different page component is displayed. This approach is being used because Github Pages uses a backend to handle routes and React Router uses the frontend. Additionally, I am using Vite with React Router and the GH-Pages package has caused me many issues. Since this is just a demo and not a professionally used website, this solution will be sufficient although not ideal.

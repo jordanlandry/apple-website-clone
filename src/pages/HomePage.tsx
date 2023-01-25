@@ -1,12 +1,15 @@
-import { useLocation } from "react-router";
+import { SetLocationContext } from "../App";
 import CardBig from "../components/CardBig";
 import CardSmall from "../components/CardSmall";
 import frontPageSmallIcons from "../data/frontPage";
 import { CardSmallProps } from "../data/interfaces";
 import Chevron from "../icons/Chevron";
 import PlayButton from "../icons/PlayButton";
+import { useContext } from "react";
 
 export default function HomePage() {
+  const setLocation = useContext(SetLocationContext);
+
   // Handle different routes for GH-pages
   document.getElementById("body")!.style.backgroundColor = "#fff";
 
@@ -54,7 +57,7 @@ export default function HomePage() {
           <h2>iPhone 14</h2>
           <h3>Big and bigger.</h3>
           <div>
-            <a href="/iphone-14">
+            <a href="#" onClick={() => setLocation("/iphone-14")}>
               Learn more
               <Chevron />
             </a>

@@ -1,13 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { WidthContext } from "../App";
+
+// Using context instead of state to avoid rerendering multiple times when
+// using this hook multiple times in a single component
 
 export default function useWidth() {
-  const [width, setWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
+  const width = useContext(WidthContext);
   return width;
 }
