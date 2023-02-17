@@ -29,6 +29,7 @@ div {
   width: 100%;
 }
 
+html,
 body {
   overflow-x: hidden;
   margin: 0;

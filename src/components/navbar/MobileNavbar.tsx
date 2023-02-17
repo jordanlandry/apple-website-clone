@@ -10,44 +10,41 @@ export default function MobileNavbar({}: NavProps) {
 
   useKeybind("Escape", () => setIsOpen(false));
 
+  const toggleOpen = () => setIsOpen((prev) => !prev);
+
   return (
     <nav className="mobile-nav">
-      {isOpen ? (
-        <div className="mobile-nav--open">
-          <div>
-            <span className="hamburger-wrapper" onClick={() => setIsOpen(false)}>
-              <div />
-              <div />
-            </span>
+      <div className="mobile-nav--closed">
+        <span className={`hamburger-wrapper ${isOpen ? "hamburger-open" : ""}`} onClick={toggleOpen}>
+          <div />
+          <div />
+        </span>
+        {isOpen ? (
+          <div className="mobile-nav--open">
+            <div className="mobile-nav--list">
+              <ul onClick={toggleOpen}>
+                <NavLink link="/store">Store</NavLink>
+                <NavLink link="/mac">Mac</NavLink>
+                <NavLink link="/ipad">iPad</NavLink>
+                <NavLink link="/iphone">iPhone</NavLink>
+                <NavLink link="/watch">Watch</NavLink>
+                <NavLink link="/airpods">AirPods</NavLink>
+                <NavLink link="/tv-home">TV & Home</NavLink>
+                <NavLink link="/services">Only on Apple</NavLink>
+                <NavLink link="/accessories">Accessories</NavLink>
+                <NavLink link="/support">Support</NavLink>
+              </ul>
+            </div>
           </div>
-          <div className="mobile-nav--list">
-            <ul>
-              <NavLink link="/store">Store</NavLink>
-              <NavLink link="/mac">Mac</NavLink>
-              <NavLink link="/ipad">iPad</NavLink>
-              <NavLink link="/iphone">iPhone</NavLink>
-              <NavLink link="/watch">Watch</NavLink>
-              <NavLink link="/airpods">AirPods</NavLink>
-              <NavLink link="/tv-home">TV & Home</NavLink>
-              <NavLink link="/services">Only on Apple</NavLink>
-              <NavLink link="/accessories">Accessories</NavLink>
-              <NavLink link="/support">Support</NavLink>
-            </ul>
-          </div>
-        </div>
-      ) : (
-        <div className="mobile-nav--closed">
-          <span className="hamburger-wrapper" onClick={() => setIsOpen(true)}>
-            <div />
-            <div />
-          </span>
-
-          <NavLink link="/">
-            <AppleLogo size={48} />
-          </NavLink>
-          <span>Cart</span>
-        </div>
-      )}
+        ) : (
+          <>
+            <NavLink link="/">
+              <AppleLogo size={48} />
+            </NavLink>
+            <span>Cart</span>
+          </>
+        )}
+      </div>
     </nav>
   );
 }

@@ -1,137 +1,92 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import clamp from "../../../helpers/clamp";
 
-type Props = {
-  imageSize: string;
-};
-export default function DynamicIslandSection({ imageSize }: Props) {
-  const dynamicIslandTextRef = useRef(null);
+type Props = { imageSize: string };
 
-  const dynamicIslandProperties = {
-    minTextSize: 95,
-    maxTextSize: 200,
-    minY: window.innerHeight * 0.6, // Lower is higher because it's the distance from the top of the page
-    maxY: window.innerHeight * 0.45,
+export default function DynamicIslandSectionTest({ imageSize }: Props) {
+  const textElementRef = useRef<HTMLElement>(null);
 
-    minYSize: 50,
-    maxYSize: 105,
+  const beginAnimationAt = 0.65; // 0.8 means the element is 80% from the top of the screen
+  const endAnimationAt = 0.1; // 0.1 means the element is 10% from the top of the screen
 
-    minXSize: 50,
-    maxXSize: 300,
+  const textElementY = textElementRef.current?.getBoundingClientRect().y!;
+  const percentScroll =
+    imageSize !== "small"
+      ? clamp(1 - (textElementY / window.innerHeight - endAnimationAt) / (beginAnimationAt - endAnimationAt), 0, 1)
+      : 1; // If the image size is small, then we don't want to animate the text because the animation will only be used for bigger screens
 
-    minBorderPx: 8,
-    maxBorderPx: 17,
-    initialYOffset: -10,
-  };
+  const initialWidth = 47;
+  const endWidth = 130;
+  const initialScale = 1;
+  const endScale = 2.4;
 
-  // Sizing Variables
-  // @ts-ignore
-  const dynamicIslandY = dynamicIslandTextRef.current?.getBoundingClientRect().y;
-  const dynamicIslandPercent =
-    (dynamicIslandY - dynamicIslandProperties.minY) / (dynamicIslandProperties.maxY - dynamicIslandProperties.minY);
+  const width = initialWidth + percentScroll * (endWidth - initialWidth);
+  const scale = initialScale + percentScroll * (endScale - initialScale);
 
-  const dynamicIslandTextSize = clamp(
-    dynamicIslandProperties.minTextSize + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minTextSize,
-    dynamicIslandProperties.maxTextSize
-  );
+  // If the image size is small, then we don't want to animate the text because the animation will only be used for bigger screens
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const dynamicIslandHeight = clamp(
-    dynamicIslandProperties.minYSize + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minYSize,
-    dynamicIslandProperties.maxYSize
-  );
-
-  const dynamicIslandWidth = clamp(
-    dynamicIslandProperties.minXSize + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minXSize,
-    dynamicIslandProperties.maxXSize
-  );
-
-  const dynamicIslandBorderPx = clamp(
-    dynamicIslandProperties.minBorderPx + dynamicIslandPercent * 100,
-    dynamicIslandProperties.minBorderPx,
-    dynamicIslandProperties.maxBorderPx
-  );
-
-  const dynamicIslandYOffset =
-    dynamicIslandProperties.initialYOffset -
-    clamp(dynamicIslandProperties.initialYOffset * dynamicIslandPercent, dynamicIslandProperties.initialYOffset, 0);
-
-  const showDynamicIslandVideo = dynamicIslandWidth === dynamicIslandProperties.maxXSize;
-  const dynamicIslandVideoRef = useRef<null | HTMLVideoElement>(null);
-
-  // Replay the video at the beginning everytime it is shown
+  // Replay the video everytime it is scrolled into view
   useEffect(() => {
-    if (dynamicIslandVideoRef.current) {
-      dynamicIslandVideoRef.current.currentTime = 0;
-      dynamicIslandVideoRef.current.play();
+    if (videoRef.current && percentScroll >= 1) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play();
     }
-  }, [showDynamicIslandVideo]);
+  }, [percentScroll]);
 
-  // @ts-ignore
-  if (showDynamicIslandVideo.current) {
-    if (showDynamicIslandVideo) dynamicIslandVideoRef.current!.play();
-    else dynamicIslandVideoRef.current!.pause();
-  }
-
-  const maxScale = 5;
-  const minScale = 1;
-  const scale = dynamicIslandPercent * 10;
+  const wrapperTransform =
+    imageSize === "small"
+      ? "translate(-56%, 10%) scale(0.6)"
+      : imageSize === "medium"
+      ? `translate(calc(-50% - 121px), 380px) scale(${scale * 0.78})`
+      : `translate(calc(-50% - 155px), 338px) scale(${scale})`;
 
   return (
-    <>
-      {/* The Apple website doesn't use the O as a letter which can be an accessibility issue
-          so I am using an O as an invisible character  
-
-          ~~~ still a very minor accessibility issue with it, so I may use a photo that says iPhone instead
-          and use invisible text to say iPhone, so that it is still accessible to screen readers          
-          */}
+    <div>
       <span
-        className={showDynamicIslandVideo ? "dynamic-island-max-size" : ""}
+        className={percentScroll >= 1 && imageSize !== "small" ? "dynamic-island-max-size" : ""}
+        ref={textElementRef}
         style={{
+          display: "inline-block",
+          position: "relative",
+          left: "50%",
+          transform: wrapperTransform,
           marginTop: "500px",
-          fontSize: `${dynamicIslandTextSize}px`,
-          marginRight: "270px",
-          whiteSpace: "nowrap",
-          transform: "translateY(-6px)",
-          fontWeight: 600,
         }}
-        ref={dynamicIslandTextRef}
       >
-        <span>
+        <span
+          style={{
+            fontSize: "89px",
+            fontWeight: "500",
+            color: "#cecece",
+            margin: "auto",
+            whiteSpace: "nowrap",
+          }}
+        >
           Meet the
           <br />
-        </span>
-        <span>
           new face
           <br />
-        </span>
-        <span style={{ display: "flex", alignItems: "center", gap: "1px" }}>
-          of iPh<span className="invisible">o</span>
+          of iPh
           <span
             style={{
-              width: `${dynamicIslandWidth}px`,
-              height: `${dynamicIslandHeight}px`,
-              borderRadius: "60px",
-              border: `${dynamicIslandBorderPx}px solid white`,
+              width: `${width}px`,
+              zIndex: 500,
+              height: "50px",
+              borderRadius: "25px",
+              border: "8px solid #cecece",
               display: "inline-block",
-              marginTop: "35px",
-              transform: `translateY(${dynamicIslandYOffset}px)`,
+              verticalAlign: "middle",
             }}
           ></span>
-          ne.
+          ne
         </span>
       </span>
-      <div
-        className={`${showDynamicIslandVideo ? "dynamic-island-video" : "invisible"}`}
-        style={{ margin: "0 auto", display: "block", transform: "translateY(-594px)" }}
-      >
+      <div className={percentScroll >= 1 ? "dynamic-island-video" : "invisible"}>
         <p
           style={{
-            fontSize: "32px",
-            color: "#cecece",
-            width: "546px",
+            fontSize: `${imageSize === "small" ? 21 : 32}px`,
+            width: `${imageSize === "small" ? 324 : 546}px`,
             margin: "0 auto 124px",
           }}
         >
@@ -139,39 +94,51 @@ export default function DynamicIslandSection({ imageSize }: Props) {
           bubbles up music, sports scores, FaceTime, and so much more — all without taking you away from what you’re
           doing.
         </p>
-        <img
-          src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/dynamic-island/dynamic_hw__wx47n1mguoi6_${imageSize}.png`}
-          style={{
-            margin: "auto",
-            display: "block",
-            zIndex: 2,
-            position: "relative",
-          }}
-        />
-        <div
-          style={{
-            display: "block",
-            margin: "auto",
-            position: "relative",
-            boxShadow: "0 0 50px 75px rgba(0, 0, 0, 1) ",
-            width: "100%",
-            height: "100%",
-            zIndex: 3,
-          }}
-        ></div>
-        <video
-          ref={dynamicIslandVideoRef}
-          style={{
-            borderRadius: "30px 30px 0 0 ",
-            transform: "translateY(-833px)",
-            zIndex: 1,
-            display: "block",
-            margin: "auto",
-          }}
-          src={`https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/${imageSize}.mp4`}
-          autoPlay={false}
-        ></video>
+        {imageSize !== "small" ? (
+          <div
+            style={{
+              display: "block",
+              margin: "0 auto 500px auto",
+              position: "relative",
+              width: "100%",
+              height: "100%",
+              zIndex: 3,
+            }}
+          >
+            <video
+              ref={videoRef}
+              style={{
+                borderRadius: "30px 30px 0 0",
+                margin: "0 auto",
+                display: "block",
+                zIndex: 2,
+              }}
+              src={`https://www.apple.com/105/media/us/iphone-14-pro/2022/a3e991f3-071e-454c-b714-1b2319bb97a8/anim/dynamic-island/${imageSize}.mp4`}
+            ></video>
+            {imageSize !== "small" ? (
+              <img
+                src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/dynamic-island/dynamic_hw__wx47n1mguoi6_${imageSize}.png`}
+                style={{
+                  margin: "auto",
+                  display: "block",
+                  zIndex: 2,
+                  position: "absolute",
+                  left: "50%",
+                  transform: "translate(-50%, -100%)",
+                }}
+              />
+            ) : null}
+          </div>
+        ) : (
+          <img
+            style={{
+              margin: "0 auto",
+              display: "block",
+            }}
+            src={`https://www.apple.com/v/iphone-14-pro/c/images/overview/dynamic-island/dynamic__fuiint4o9jma_small.jpg`}
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 }

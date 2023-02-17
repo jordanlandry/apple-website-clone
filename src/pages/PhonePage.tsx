@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import BionicChipSection from "../components/iphone-14-pro-page/sections/BionicChipSection";
+import DynamicIslandSection from "../components/iphone-14-pro-page/sections/DynamicIslandSection";
 import DynamicIslandSectionTest from "../components/iphone-14-pro-page/sections/DynamicIslandSectionTest";
 import PictureTabSection from "../components/iphone-14-pro-page/sections/PictureTabSection";
 import useImageWidth from "../hooks/useImageWidth";
@@ -118,9 +119,9 @@ export default function PhonePage() {
           6.1″ and 6.7″ display sizes.2 All in four Pro colors.
         </p>
       </div>
-      {/* <DynamicIslandSection imageSize={sizes[size]} /> */}
+      <DynamicIslandSection imageSize={sizes[size]} />
 
-      <DynamicIslandSectionTest imageSize={sizes[size]} />
+      {/* <DynamicIslandSectionTest imageSize={sizes[size]} /> */}
       <PictureTabSection />
       <BionicChipSection />
     </div>

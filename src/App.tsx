@@ -19,11 +19,11 @@ function App() {
   }
 
   const paths: Paths = {
-    "/": <Iphone14Page />,
-    "/iphone-14-pro": <PhonePage />,
-    "/apple-website-clone/iphone-14-pro": <PhonePage />,
-    "/iphone-14": <Iphone14Page />,
-    "/apple-website-clone/iphone-14": <Iphone14Page />,
+    "/": <PhonePage />,
+    // "/iphone-14-pro": <PhonePage />,
+    // "/apple-website-clone/iphone-14-pro": <PhonePage />,
+    // "/iphone-14": <Iphone14Page />,
+    // "/apple-website-clone/iphone-14": <Iphone14Page />,
   };
 
   // Change location when the url changes
@@ -44,7 +44,8 @@ function App() {
         <LocationContext.Provider value={location}>
           <SetLocationContext.Provider value={setLocation}>
             <Navbar />
-            {paths[location]}
+            {/* {paths[location]} */}
+            <PhonePage />
           </SetLocationContext.Provider>
         </LocationContext.Provider>
       </div>
